@@ -31,7 +31,7 @@ animation = "Player_Attack"
 [node name="ShootStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 
-[node name="BlobalCoolDown" type="Timer" parent="."]
+[node name="GlobalCoolDown" type="Timer" parent="."]
 process_mode = 0
 wait_time = 0.5
 autostart = true
@@ -41,4 +41,4 @@ polygon = PoolVector2Array( -12.404, -15.7236, -8.38229, -15.9445, -2.10671, -9.
 
 [node name="Canon" type="Position2D" parent="."]
 position = Vector2( 16.8109, 0.00858021 )
-[connection signal="timeout" from="BlobalCoolDown" to="." method="_on_BlobalCoolDown_timeout"]
+[connection signal="timeout" from="GlobalCoolDown" to="." method="_on_GlobalCoolDown_timeout"]

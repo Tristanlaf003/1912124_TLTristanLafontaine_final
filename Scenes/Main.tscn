@@ -11,7 +11,7 @@ script = ExtResource( 2 )
 [node name="backgound music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 699.456, 293.665 )
-
 [node name="Enemies" parent="." instance=ExtResource( 4 )]
+position = Vector2( 128.434, 223.571 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]

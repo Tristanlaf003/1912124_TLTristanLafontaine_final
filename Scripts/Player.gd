@@ -29,7 +29,7 @@ func _physics_process(delta):
 		velocite = move_and_slide(velocite)
 
 
-func _on_BlobalCoolDown_timeout():
+func _on_GlobalCoolDown_timeout():
 	can_shoot = true
 
 func get_input():
