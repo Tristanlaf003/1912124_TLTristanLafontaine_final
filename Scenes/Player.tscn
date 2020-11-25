@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sounds/shoot.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sprites/Player/Player_Attack.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Balle.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Player_Attack",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 5
+script = ExtResource( 1 )
+balle = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.15851, 0.0222988 )
+rotation = 1.5708
+scale = Vector2( 0.326756, 0.359997 )
+frames = SubResource( 1 )
+animation = "Player_Attack"
+
+[node name="ShootStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="BlobalCoolDown" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.5
+autostart = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -12.404, -15.7236, -8.38229, -15.9445, -2.10671, -9.62477, 9.64894, -9.71315, 9.60474, -4.40985, 11.9028, -4.40985, 15.571, -0.0346298, 9.82571, 5.22448, 9.78152, 9.99745, -2.01833, 10.0858, -8.16132, 16.0962, -12.2272, 16.1404, -12.2714, 4.07543, -14.8346, 1.73314, -14.7904, -1.36045, -12.1388, -4.10049 )
+
+[node name="Canon" type="Position2D" parent="."]
+position = Vector2( 16.8109, 0.00858021 )
+[connection signal="timeout" from="BlobalCoolDown" to="." method="_on_BlobalCoolDown_timeout"]

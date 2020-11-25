@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Sprites/Enemies/Enemy_1_Neon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Enemies/Enemy_3_Neon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Enemies/Enemy_2_Neon.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "gros",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "petit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "moyen",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 59.8059
+
+[node name="Enemies" type="KinematicBody2D"]
+scale = Vector2( 1.00925, 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "moyen"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 12.9125, 11.55 )
+scale = Vector2( 6.38022, 5.8125 )
+polygon = PoolVector2Array( -11.9629, -12.9978, 7.91523, -12.9978, 7.91523, 9.02366, -11.9629, 9.02366 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 4.1068, 3.67077 )
+scale = Vector2( -6.43844, 6.48942 )
+shape = SubResource( 2 )
