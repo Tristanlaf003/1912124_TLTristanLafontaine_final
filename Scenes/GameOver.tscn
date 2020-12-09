@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="Game Over" type="Label" parent="."]
+margin_left = 590.562
+margin_top = 106.235
+margin_right = 664.562
+margin_bottom = 154.235
+rect_scale = Vector2( 10, 10 )
+text = "
+
+			Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -28,6 +28,7 @@ radius = 1.35583
 height = 0.0
 
 [node name="Balle" type="KinematicBody2D"]
+collision_layer = 2147483650
 script = ExtResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
@@ -43,4 +44,7 @@ animation = "Missille_Ennemis"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0589924, 0.0294962 )
 shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

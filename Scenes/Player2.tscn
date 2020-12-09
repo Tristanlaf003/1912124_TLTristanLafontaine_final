@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Sprites/Player/Player_Attack.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Player2.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Balle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sounds/shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sprites/Player/Debris.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "mort",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Player",
+"speed": 5.0
+} ]
+
+[node name="Player2" type="KinematicBody2D"]
+position = Vector2( 18.03, 19.799 )
+scale = Vector2( 0.75, 0.75 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 2 )
+balle = ExtResource( 3 )
+
+[node name="ShootStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.75, 0.75 )
+polygon = PoolVector2Array( -48.087, 34.4931, -12.5022, 34.8677, -4.07419, 40.6737, 4.35379, 40.4864, 12.7818, 34.8677, 48.1793, 34.8677, 47.992, 24.7541, 29.0759, 6.77446, 29.0758, -25.8137, 12.2199, -25.8137, 12.0326, -31.8069, -0.141138, -41.5459, -16.0606, -27.312, -30.4819, -26.9374, -31.0437, 6.58717, -47.8997, 24.005 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 1 )
+animation = "Player"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( 0.75, 0.75 )
+current = true
+
+[node name="GlobalCoolDown" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Canon" type="Position2D" parent="."]
+position = Vector2( 38.3508, 0 )
+[connection signal="mort" from="." to="." method="_on_Player2_mort"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="GlobalCoolDown" to="." method="_on_GlobalCoolDown_timeout"]

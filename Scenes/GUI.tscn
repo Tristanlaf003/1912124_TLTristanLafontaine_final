@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/GUI.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/LifeBar.tscn" type="PackedScene" id=2]
+
+[node name="GUI" type="MarginContainer"]
+margin_left = -672.717
+margin_top = -395.221
+margin_right = -272.717
+margin_bottom = -342.221
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Bars" type="VBoxContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 53.0
+
+[node name="LifeBar" parent="Bars" instance=ExtResource( 2 )]
+margin_right = 400.0
+
+[editable path="Bars/LifeBar"]

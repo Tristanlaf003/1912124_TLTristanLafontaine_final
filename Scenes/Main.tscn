@@ -1,17 +1,57 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Sounds/Automation.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Enemies.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Backgrounds/level_1.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Mur.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
+nombre_ennemies = 6
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 306.546, 282.65 )
+scale = Vector2( 2.05167, 1.77119 )
+texture = ExtResource( 5 )
+
+[node name="Mur" parent="." instance=ExtResource( 6 )]
+position = Vector2( -3770.39, 94.7033 )
+hauteur = 10
+largeur = 200
+oreatation = 90
+
+[node name="Mur3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 4630.82, 148.306 )
+hauteur = 10
+largeur = 200
+oreatation = 90
+
+[node name="Mur2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 11.46, -1843.96 )
+hauteur = 20
+largeur = 300
+oreatation = 180
+
+[node name="Mur4" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1.75342, 2586.72 )
+hauteur = 4
+largeur = 300
+oreatation = 180
 
 [node name="backgound music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+autoplay = true
 
-[node name="Enemies" parent="." instance=ExtResource( 4 )]
-position = Vector2( 128.434, 223.571 )
+[node name="GUI" parent="." instance=ExtResource( 4 )]
+margin_left = 36.5558
+margin_top = 37.9012
+margin_right = 436.556
+margin_bottom = 90.9012
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 958.418, 538.172 )
+collision_mask = 2
+vitesse = 400
+[connection signal="vie_change" from="Player2" to="GUI" method="_on_Player2_vie_change"]
